@@ -10,7 +10,7 @@ namespace Homework7._1
     /// <summary>
     /// Класс список
     /// </summary>
-    /// <typeparam name="T">Тип элементов списка</typeparam>
+    /// <typeparam name="T">Тип элементов списка </typeparam>
     public class List<T>
     {
         /// <summary>
@@ -19,7 +19,7 @@ namespace Homework7._1
         private class ListElement
         {
             /// <summary>
-            /// Значение элемента списка
+            /// Значение элемента списка 
             /// </summary>
             public T Value { get; set; }
 
