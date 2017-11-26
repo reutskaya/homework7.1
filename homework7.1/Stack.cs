@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 
-namespace Hw71
+namespace Homework7_1
 {
     /// <summary>
     /// Класс стек
@@ -14,7 +12,7 @@ namespace Hw71
         /// </summary>
         private class StackElement
         {
-            public StackElement Next { get; private set; }
+            public StackElement Next;
             public T Value { get; private set; }
 
 
@@ -52,6 +50,6 @@ namespace Hw71
         /// <summary>
         /// Метод возвращает true, если стек пустой
         /// </summary>
-        public bool IsStackEmpty() => null == head;
+        public bool IsStackEmpty() => head == null;
     }
 }

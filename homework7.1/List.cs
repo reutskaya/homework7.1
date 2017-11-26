@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Homework7._1
+namespace Homework7_1
 {
     /// <summary>
     /// Класс список
@@ -31,8 +28,8 @@ namespace Homework7._1
             /// <summary>
             /// Конструктор для класса ListElement
             /// </summary>
-            /// <param name="Value">Значение элемента списка</param>
-            /// <param name="Next">Указатель на следующий элемент списка</param>
+            /// <param name="value">Значение элемента списка</param>
+            /// <param name="next">Указатель на следующий элемент списка</param>
             public ListElement(T value, ListElement next)
             {
                 Value = value;
