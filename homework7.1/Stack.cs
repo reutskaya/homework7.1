@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Homework7_1
+namespace homework7_1
 {
     /// <summary>
-    /// Класс стек
+    /// Класс cтек
     /// </summary>
     public class Stack<T>
     {
@@ -14,8 +14,6 @@ namespace Homework7_1
         {
             public StackElement Next;
             public T Value { get; private set; }
-
-
             public StackElement(StackElement next, T value)
             {
                 Next = next;
@@ -24,17 +22,17 @@ namespace Homework7_1
         }
 
         /// <summary>
-        /// Указатель на первый элемент стека
+        /// Первый элемент стека
         /// </summary>
         private StackElement head = null;
 
         /// <summary>
-        /// Метод, добавляющий один элемент в стек
+        /// Добавление элемента в стек
         /// </summary>
         public void Push(T value) => head = new StackElement(head, value);
 
         /// <summary>
-        /// Метод, возвращающий значение с головы стека
+        /// Возврат значения с головы стека
         /// </summary>
         public T Pop()
         {

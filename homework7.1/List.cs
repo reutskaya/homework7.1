@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Homework7_1
+namespace homework7_1
 {
     /// <summary>
     /// Класс список
     /// </summary>
-    /// <typeparam name="T">Тип элементов списка </typeparam>
     public class List<T>
     {
         /// <summary>
@@ -16,7 +15,7 @@ namespace Homework7_1
         private class ListElement
         {
             /// <summary>
-            /// Значение элемента списка 
+            /// Значение элемента списка
             /// </summary>
             public T Value { get; set; }
 
@@ -28,8 +27,8 @@ namespace Homework7_1
             /// <summary>
             /// Конструктор для класса ListElement
             /// </summary>
-            /// <param name="value">Значение элемента списка</param>
-            /// <param name="next">Указатель на следующий элемент списка</param>
+            /// <param name="Value">Значение элемента</param>
+            /// <param name="Next">указатель на следующий элемент</param>
             public ListElement(T value, ListElement next)
             {
                 Value = value;
@@ -48,49 +47,44 @@ namespace Homework7_1
         private int length;
 
         /// <summary>
-        /// Добавление элемента на указанную позицию
-        /// n >= 0
-        /// position не может быть больше length
+        /// Добавление элемента
         /// </summary>
-        /// <param name="value">Значение нового элемента</param>
+        /// <param name="Value">Значение нового элемента</param>
         /// <param name="position">Позиция нового элемента</param>
-        public void AddValue(T value, int position)
+        public void AddValue(T Value, int position)
         {
-            if (position < 0 || position > this.length)
+            if (position < 0 || position > length)
             {
                 throw new InvalidOperationException("Incorrect position!");
             }
-
             if (position == 0)
             {
-                this.head = new ListElement(value, this.head);
-                this.length++;
+                head = new ListElement(Value, head);
+                length++;
                 return;
             }
-
-            ListElement cursor = this.head;
+            ListElement cursor = head;
             for (var i = 0; i < position - 1; i++)
             {
                 cursor = cursor.Next;
             }
-
-            var newElement = new ListElement(value, cursor.Next);
+            var newElement = new ListElement(Value, cursor.Next);
             cursor.Next = newElement;
-            this.length++;
+            length++;
         }
 
         /// <summary>
-        /// Получение значения указанного элемента
+        /// Получение значения элемента 
         /// </summary>
-        /// <param name="position">Позиция элемента</param>
+        /// <param name="position">Позиция искомого элемента</param>
         public T GetValue(int position)
         {
-            if (position < 0 || position >= this.length)
+            if (position < 0 || position >= length)
             {
                 throw new InvalidOperationException("Incorrect position!");
             }
 
-            var cursor = this.head;
+            var cursor = head;
             for (var i = 0; i < position; ++i)
             {
                 cursor = cursor.Next;
@@ -100,31 +94,28 @@ namespace Homework7_1
         }
 
         /// <summary>
-        /// Удаление элемента с n-ой позиции
+        /// Удаление элемента
         /// </summary>
-        /// <param name="position">Позиция элемента, который нужно удалить</param>
+        /// <param name="position">Позиция удаляяемого элемента</param>
         public void DeleteElement(int position)
         {
             if (position < 0 || position >= length)
             {
                 throw new InvalidOperationException("Incorrect position!");
             }
-
             if (position == 0)
             {
-                this.head = head.Next;
-                this.length--;
+                head = head.Next;
+                length--;
                 return;
             }
-
-            ListElement cursor = this.head;
+            ListElement cursor = head;
             for (int i = 0; i < position - 1; i++)
             {
                 cursor = cursor.Next;
             }
-
             cursor.Next = cursor.Next.Next;
-            this.length--;
+            length--;
         }
 
         /// <summary>
@@ -140,7 +131,7 @@ namespace Homework7_1
         public IEnumerator<T> GetEnumerator() => new ListEnumerator(this);
 
         /// <summary>
-        /// Просмотр перечислителя
+        /// Класс для перебора коллекции
         /// </summary>
         private class ListEnumerator : IEnumerator<T>
         {
@@ -163,26 +154,35 @@ namespace Homework7_1
             }
 
             /// <summary>
-            /// Возвращает значение текущего элемента
+            /// Значение текущего элемента
             /// </summary>
             public T Current
             {
-                get { return cursor.Value; }
+                get
+                {
+                    return cursor.Value;
+                }
             }
 
             object IEnumerator.Current
             {
-                get { return Current; }
+                get
+                {
+                    return Current;
+                }
             }
 
-            public void Dispose() { } 
+            public void Dispose()
+            {
+
+            }
 
             /// <summary>
             /// Переход к следующему элементу
             /// </summary>
             public bool MoveNext()
             {
-                if (this.head == null)
+                if (head == null)
                 {
                     return false;
                 }
@@ -203,7 +203,7 @@ namespace Homework7_1
             }
 
             /// <summary>
-            /// Сдвиu указатель на начальную позицию
+            /// Сдвинуть указатель на начальную позицию
             /// </summary>
             public void Reset() => cursor = null;
         }
