@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Homework7_1.Tests
+namespace homework7_1.tests
 {
     [TestClass]
     public class StackTests
